@@ -1,0 +1,30 @@
+
+backtrack(2D_array, start_time):
+	call advance on the row-column pointers
+	if the pointer has advanced past the last square
+		stop the timer
+		do some math and return the milisecond time difference
+	
+
+main():
+	create an instance if needed
+	initialize a milisecond counter variable to zero
+
+	populate ten arrays of ten numbers from an easy sudoku puzzle
+	start a timer
+	call backtrack with the 2D array and the start time as parameters
+	stop the timer
+	print the returned difference in miliseconds and add it to the count
+
+    populate ten arrays of ten numbers from a medium sudoku puzzle
+    start a timer
+    call backtrack with the 2D array and the start time as parameters
+    stop the timer
+    print the returned difference in miliseconds and add it to the count
+
+    populate ten arrays of ten numbers from a hard sudoku puzzle
+    start a timer
+    call backtrack with the 2D array and the start time as parameters
+    print the returned difference in miliseconds
+
+	print the value of the milisecond counter
