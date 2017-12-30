@@ -1,10 +1,35 @@
+deadvance():
+	if col is zero
+		col = 8
+		decrement row
+	else
+		decrement col
+	
+
+advance():
+	if col is 8
+		col = 0
+		increment row
+	else
+		increment col
+	if row is not 9 and col is not 0
+		if the very first configuration has a number other than a zero in it
+			call advance
+
 
 backtrack(2D_array, start_time):
-	call advance on the row-column pointers
+	call advance
 	if the pointer has advanced past the last square
 		stop the timer
 		do some math and return the milisecond time difference
-	
+	else
+		for each number from 1 to 9
+			put the number in the pointed to spot
+			if calling isValid on the configuration returns true
+				call backtrack on the current configuration
+		set the current square back to zero
+		call deadvance
+				
 
 main():
 	create an instance if needed
