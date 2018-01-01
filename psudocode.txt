@@ -1,10 +1,35 @@
+copyBoard():
+	initialize a 2d array of 9 by 9
+	for each number from 1 to 9
+		copy the current row to the new row
+
+
+checkSquare():
+	store the row and the column of the current cell's top left 3x3 square
+	go through each box to see if any have the current box's number in it
+	if any of these are true, return false. else return true
+
+
+isValid():
+	store the number of what is in the current box: num
+	for each number from 1 to 9: i
+		if i does not equal the current column and the number at [current
+														row][i] equals num
+			return false
+		if i does not equal the current row ans the number at [i][current
+														column] equals num
+			return false
+		return the result of calling checkSquare
+
+
 deadvance():
 	if col is zero
 		col = 8
 		decrement row
 	else
 		decrement col
-	
+    if the very first configuration has a number other than a zero in it
+        call deadvance
 
 advance():
 	if col is 8
