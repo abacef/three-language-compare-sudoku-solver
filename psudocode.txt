@@ -80,4 +80,11 @@ main():
     call backtrack with the 2D array and the start time as parameters
     print the returned difference in miliseconds
 
+    set row counter to -1 and column counter to 8
+    populate ten arrays of ten numbers from an expert sudoku puzzle
+    start a timer
+    call backtrack with the 2D array and the start time as parameters
+    stop the timer
+    print the returned difference in miliseconds and add it to the count
+
 	print the value of the milisecond counter
