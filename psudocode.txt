@@ -1,6 +1,6 @@
 copyBoard():
 	initialize a 2d array of 9 by 9
-	for each number from 1 to 9
+	for each row
 		copy the current row to the new row
 
 
@@ -19,7 +19,7 @@ isValid():
 		if i does not equal the current row ans the number at [i][current
 														column] equals num
 			return false
-		return the result of calling checkSquare
+	return the result of calling checkSquare
 
 
 deadvance():
@@ -60,18 +60,21 @@ main():
 	create an instance if needed
 	initialize a milisecond counter variable to zero
 
+	set row counter to -1 and column counter to 8
 	populate ten arrays of ten numbers from an easy sudoku puzzle
 	start a timer
 	call backtrack with the 2D array and the start time as parameters
 	stop the timer
 	print the returned difference in miliseconds and add it to the count
 
+	set row counter to -1 and column counter to 8
     populate ten arrays of ten numbers from a medium sudoku puzzle
     start a timer
     call backtrack with the 2D array and the start time as parameters
     stop the timer
     print the returned difference in miliseconds and add it to the count
 
+	set row counter to -1 and column counter to 8
     populate ten arrays of ten numbers from a hard sudoku puzzle
     start a timer
     call backtrack with the 2D array and the start time as parameters
