@@ -6,12 +6,91 @@ class Sudoku:
         self.row = -1
         self.col = 8
         self.board = s1
+        board_cpy = []
+        for i in range(0, 9):
+            self.board_cpy[i] = []
+            for j in range(0, 9):
+                self.board_cpy[i][j] = self.board[i][j]
+
+
+    def print_board(self):
+        for i in range(0, 9):
+            print()
+            for j in range(0, 9):
+                print(self.board[i][j], end=" ")
+
+
+    def check_square(self):
+        r = -1
+        c = -1
+        if self.row < 3:
+            r = 0
+        else if self.row < 6:
+            r = 3
+        else:
+            r = 6
+        
+        if self.col < 3:
+            c = 0
+        else if self.col < 6:
+            c = 3
+        else:
+            c = 6
+        
+        num = self.board[self.row][self.col]
+        for i in range(0, 3):
+            for j in range(0, 3):
+                if (i not is self.row or j not is self.col) and \
+                                                     self.board[i][j] is num:
+                    return False
+        return True
+
+
+    def is_valid(self):
+        num = self.board[self.row][self.col]
+        for i in range(0, 9):
+            if i not is self.col and self.board[self.row][i] is num:
+                return False
+            if i not is self.row and self.board[i][self.col] is num:
+                return False
+        return check_square()
+
+
+    def deadvance(self):
+        if self.col is 0:
+            self.col = 8
+            self.row = self.row - 1
+        else:
+            self.col = self.col - 1
+        if self.board_cpy[self.row][self.col] not is 0:
+            deadvance()
+
+
+    def advance(self):
+        if self.col is 8:
+            self.col = 0
+            self.row = self.row + 1
+        else:
+            self.col = self.col + 1
+        if self.row not is 8 and self.col not is 0:
+            if self.board_cpy[self.row][self.col] not is 0:
+                advance()
 
 
     def backtrack(self):
-        print(self.board)
-        print(self.row)
-        print(self.col)
+        advance()
+        if self.row == 9 and self.col == 0:
+            return time.time()
+        else:
+            for i in range(0, 9):
+                self.board[self.row][self.col] = i
+                if is_valid():
+                    num = backtrack()
+                    if num != 0:
+                        return num
+            self.board[self.row][self.col] = 0
+            deadvance()
+        return 0
 
 
 mil_counter = 0
@@ -27,6 +106,8 @@ s18 = [3, 9, 0, 0, 7, 0, 2, 0, 0]
 s1 = [s10, s11, s12, s13, s14, s15, s16, s17, s18]
 sea = Sudoku(s1)
 start = time.time()
-sea.backtrack()
-end = (time.time() - start) * 10 * 10 * 10
+end = (sea.backtrack() - start) * 10 * 10 * 10
+sea.print_board()
+print()
 print(end)
+mil_counter = mil_counter + end
