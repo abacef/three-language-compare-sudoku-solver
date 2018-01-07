@@ -5,6 +5,12 @@ programing languages Java, C and Python. Each language is used to implement a
 sudoku solving algorithm based on the same psudocode. indicated in the file 
 psudocode.txt
 
+Since what we are timing is a backtracking algorithm, the actions of a
+programing language that we are comparing is going to be made up of function
+calls, recursion, and a little math. The places where languages are implemented
+totally differently, that seperate themselves time wise from others will not be
+tested.
+
 All aspects of development are happening on the terminal. Since I learned how to
 use many unix commands and was forced to use vim in my recent Mechanics of 
 Programing class, learned to properly use github's integration with git in
