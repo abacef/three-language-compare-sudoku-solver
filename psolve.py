@@ -6,11 +6,11 @@ class Sudoku:
         self.row = -1
         self.col = 8
         self.board = s1
-        board_cpy = []
+        self.board_cpy = []
         for i in range(0, 9):
-            self.board_cpy[i] = []
+            self.board_cpy.append([])
             for j in range(0, 9):
-                self.board_cpy[i][j] = self.board[i][j]
+                self.board_cpy[i].append(self.board[i][j])
 
 
     def print_board(self):
@@ -25,14 +25,14 @@ class Sudoku:
         c = -1
         if self.row < 3:
             r = 0
-        else if self.row < 6:
+        elif self.row < 6:
             r = 3
         else:
             r = 6
         
         if self.col < 3:
             c = 0
-        else if self.col < 6:
+        elif self.col < 6:
             c = 3
         else:
             c = 6
@@ -40,7 +40,7 @@ class Sudoku:
         num = self.board[self.row][self.col]
         for i in range(0, 3):
             for j in range(0, 3):
-                if (i not is self.row or j not is self.col) and \
+                if (i is not self.row or j is not self.col) and \
                                                      self.board[i][j] is num:
                     return False
         return True
@@ -49,11 +49,11 @@ class Sudoku:
     def is_valid(self):
         num = self.board[self.row][self.col]
         for i in range(0, 9):
-            if i not is self.col and self.board[self.row][i] is num:
+            if i is not self.col and self.board[self.row][i] is num:
                 return False
-            if i not is self.row and self.board[i][self.col] is num:
+            if i is not self.row and self.board[i][self.col] is num:
                 return False
-        return check_square()
+        return self.check_square()
 
 
     def deadvance(self):
@@ -62,8 +62,8 @@ class Sudoku:
             self.row = self.row - 1
         else:
             self.col = self.col - 1
-        if self.board_cpy[self.row][self.col] not is 0:
-            deadvance()
+        if self.board_cpy[self.row][self.col] is not 0:
+            self.deadvance()
 
 
     def advance(self):
@@ -72,24 +72,24 @@ class Sudoku:
             self.row = self.row + 1
         else:
             self.col = self.col + 1
-        if self.row not is 8 and self.col not is 0:
-            if self.board_cpy[self.row][self.col] not is 0:
-                advance()
+        if self.row is not 8 and self.col is not 0:
+            if self.board_cpy[self.row][self.col] is not 0:
+                self.advance()
 
 
     def backtrack(self):
-        advance()
+        self.advance()
         if self.row == 9 and self.col == 0:
             return time.time()
         else:
             for i in range(0, 9):
                 self.board[self.row][self.col] = i
-                if is_valid():
-                    num = backtrack()
+                if self.is_valid():
+                    num = self.backtrack()
                     if num != 0:
                         return num
             self.board[self.row][self.col] = 0
-            deadvance()
+            self.deadvance()
         return 0
 
 
