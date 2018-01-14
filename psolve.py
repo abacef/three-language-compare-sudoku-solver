@@ -1,4 +1,5 @@
 import time
+import sys
 
 class Sudoku:
     
@@ -17,7 +18,7 @@ class Sudoku:
         for i in range(0, 9):
             print()
             for j in range(0, 9):
-                print(self.board[i][j], end=" ")
+                print(self.board[i][j], end = " ")
 
 
     def check_square(self):
@@ -40,8 +41,8 @@ class Sudoku:
         num = self.board[self.row][self.col]
         for i in range(0, 3):
             for j in range(0, 3):
-                if (i is not self.row or j is not self.col) and \
-                                                     self.board[i][j] is num:
+                if ((i + r) is not self.row or (j + c) is not self.col) and \
+                                                     self.board[i + r][j + c] is num:
                     return False
         return True
 
@@ -82,7 +83,7 @@ class Sudoku:
         if self.row == 9 and self.col == 0:
             return time.time()
         else:
-            for i in range(0, 9):
+            for i in range(1, 10):
                 self.board[self.row][self.col] = i
                 if self.is_valid():
                     num = self.backtrack()
@@ -92,7 +93,7 @@ class Sudoku:
             self.deadvance()
         return 0
 
-
+sys.setrecursionlimit(100000)
 mil_counter = 0
 s10 = [0, 0, 7, 0, 5, 0, 0, 9, 3]
 s11 = [5, 8, 0, 7, 0, 0, 1, 6, 0]
