@@ -42,7 +42,7 @@ class Sudoku:
         for i in range(0, 3):
             for j in range(0, 3):
                 if ((i + r) is not self.row or (j + c) is not self.col) and \
-                                                     self.board[i + r][j + c] is num:
+                                               self.board[i + r][j + c] is num:
                     return False
         return True
 
@@ -73,11 +73,9 @@ class Sudoku:
         if self.col is 8:
             self.col = 0
             self.row = self.row + 1
-            print("right now -----> " + str(self.row) + ", " + str(self.col))
         else:
             self.col = self.col + 1
         if not(self.row is 9 and self.col is 0):
-            print("right now -------> " + str(self.row) + ", " + str(self.col))
             if self.board_cpy[self.row][self.col] is not 0:
                 self.advance()
 
@@ -89,8 +87,6 @@ class Sudoku:
         else:
             for i in range(1, 10):
                 self.board[self.row][self.col] = i
-                print("testing " + str(i) + " at " + str(self.row) + ", " +
-                                                str(self.col))
                 if self.is_valid():
                     num = self.backtrack()
                     if num != 0:
@@ -113,10 +109,11 @@ s1 = [s10, s11, s12, s13, s14, s15, s16, s17, s18]
 sea = Sudoku(s1)
 start = time.time()
 end = (sea.backtrack() - start) * 10 * 10 * 10
+sea.print_board()
 print()
 print(end)
 mil_counter = mil_counter + end
-"""
+
 s20 = [0, 0, 4, 0, 3, 0, 8, 0, 0]
 s21 = [0, 0, 0, 0, 0, 4, 5, 0, 0]
 s22 = [2, 6, 0, 8, 0, 0, 3, 0, 0]
@@ -129,8 +126,47 @@ s28 = [0, 0, 3, 0, 2, 0, 6, 0, 0]
 s2 = [s20, s21, s22, s23, s24, s25, s26, s27, s28]
 smed = Sudoku(s2)
 start = time.time()
-end = (sea.backtrack() - start) * 10 * 10 * 10
+end = (smed.backtrack() - start) * 10 * 10 * 10
+smed.print_board()
 print()
 print(end)
 mil_counter = mil_counter + end
-"""
+
+s30 = [0, 0, 1, 0, 0, 0, 0, 2, 4]
+s31 = [7, 0, 0, 6, 1, 0, 0, 0, 0]
+s32 = [0, 0, 0, 0, 0, 9, 0, 0, 8]
+s33 = [6, 0, 0, 0, 0, 0, 2, 8, 1]
+s34 = [0, 4, 0, 0, 5, 0, 0, 3, 0]
+s35 = [1, 7, 3, 0, 0, 0, 0, 0, 6]
+s36 = [5, 0, 0, 3, 0, 0, 0, 0, 0]
+s37 = [0, 0, 0, 0, 4, 5, 0, 0, 2]
+s38 = [4, 6, 0, 0, 0, 0, 5, 0, 0]
+s3 = [s30, s31, s32, s33, s34, s35, s36, s37, s38]
+shar = Sudoku(s3)
+start = time.time()
+end = (shar.backtrack() - start) * 10 * 10 * 10
+shar.print_board()
+print()
+print(end)
+mil_counter = mil_counter + end
+
+s40 = [0, 2, 0, 7, 0, 0, 3, 0, 0]
+s41 = [5, 0, 0, 0, 0, 4, 0, 6, 0]
+s42 = [0, 0, 6, 1, 3, 0, 0, 0, 0]
+s43 = [0, 0, 2, 0, 6, 0, 0, 0, 4]
+s44 = [8, 0, 0, 0, 0, 0, 0, 0, 5]
+s45 = [4, 0, 0, 0, 1, 0, 8, 0, 0]
+s46 = [0, 0, 0, 0, 8, 7, 1, 0, 0]
+s47 = [0, 8, 0, 5, 0, 0, 0, 0, 7]
+s48 = [0, 0, 7, 0, 0, 2, 0, 9, 0]
+s4 = [s40, s41, s42, s43, s44, s45, s46, s47, s48]
+sexp = Sudoku(s4)
+start = time.time()
+end = (sexp.backtrack() - start) * 10 * 10 * 10
+sexp.print_board()
+print()
+print(end)
+mil_counter = mil_counter + end
+
+print()
+print(mil_counter)
