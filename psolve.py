@@ -59,21 +59,25 @@ class Sudoku:
 
     def deadvance(self):
         if self.col is 0:
-            self.col = 8
-            self.row = self.row - 1
+            if self.row is not 0:
+                self.col = 8
+                self.row = self.row - 1
         else:
             self.col = self.col - 1
-        if self.board_cpy[self.row][self.col] is not 0:
-            self.deadvance()
+        if not(self.col is 0 and self.row is 0):
+            if self.board_cpy[self.row][self.col] is not 0:
+                self.deadvance()
 
 
     def advance(self):
         if self.col is 8:
             self.col = 0
             self.row = self.row + 1
+            print("right now -----> " + str(self.row) + ", " + str(self.col))
         else:
             self.col = self.col + 1
-        if self.row is not 8 and self.col is not 0:
+        if not(self.row is 9 and self.col is 0):
+            print("right now -------> " + str(self.row) + ", " + str(self.col))
             if self.board_cpy[self.row][self.col] is not 0:
                 self.advance()
 
@@ -85,6 +89,8 @@ class Sudoku:
         else:
             for i in range(1, 10):
                 self.board[self.row][self.col] = i
+                print("testing " + str(i) + " at " + str(self.row) + ", " +
+                                                str(self.col))
                 if self.is_valid():
                     num = self.backtrack()
                     if num != 0:
@@ -93,7 +99,6 @@ class Sudoku:
             self.deadvance()
         return 0
 
-sys.setrecursionlimit(100000)
 mil_counter = 0
 s10 = [0, 0, 7, 0, 5, 0, 0, 9, 3]
 s11 = [5, 8, 0, 7, 0, 0, 1, 6, 0]
@@ -108,7 +113,24 @@ s1 = [s10, s11, s12, s13, s14, s15, s16, s17, s18]
 sea = Sudoku(s1)
 start = time.time()
 end = (sea.backtrack() - start) * 10 * 10 * 10
-sea.print_board()
 print()
 print(end)
 mil_counter = mil_counter + end
+"""
+s20 = [0, 0, 4, 0, 3, 0, 8, 0, 0]
+s21 = [0, 0, 0, 0, 0, 4, 5, 0, 0]
+s22 = [2, 6, 0, 8, 0, 0, 3, 0, 0]
+s23 = [4, 0, 0, 0, 7, 9, 0, 0, 6]
+s24 = [3, 0, 0, 1, 4, 8, 0, 0, 7]
+s25 = [7, 0, 0, 3, 6, 0, 0, 0, 8]
+s26 = [0, 0, 9, 0, 0, 3, 0, 8, 5]
+s27 = [0, 0, 1, 6, 0, 0, 0, 0, 0]
+s28 = [0, 0, 3, 0, 2, 0, 6, 0, 0]
+s2 = [s20, s21, s22, s23, s24, s25, s26, s27, s28]
+smed = Sudoku(s2)
+start = time.time()
+end = (sea.backtrack() - start) * 10 * 10 * 10
+print()
+print(end)
+mil_counter = mil_counter + end
+"""
