@@ -1,0 +1,83 @@
+copyBoard():
+	initialize a 2d array of 9 by 9
+	for each row
+		copy the current row to the new row
+
+
+checkSquare():
+	store the row and the column of the current cell's top left 3x3 square
+	go through each box to see if any have the current box's number in it
+	if any of these are true, return false. else return true
+
+
+isValid():
+	store the number of what is in the current box: num
+	for each number from 1 to 9: i
+		if i does not equal the current column and the number at [current
+														row][i] equals num
+			return false
+		if i does not equal the current row ans the number at [i][current
+														column] equals num
+			return false
+	return the result of calling checkSquare
+
+
+deadvance():
+	if col is zero
+		col = 8
+		decrement row
+	else
+		decrement col
+    if the very first configuration has a number other than a zero in it
+        call deadvance
+
+advance():
+	if col is 8
+		col = 0
+		increment row
+	else
+		increment col
+	if row is not 9 and col is not 0
+		if the very first configuration has a number other than a zero in it
+			call advance
+
+
+backtrack(2D_array, start_time):
+	call advance
+	if the pointer has advanced past the last square
+		stop the timer
+		do some math and return the milisecond time difference
+	else
+		for each number from 1 to 9
+			put the number in the pointed to spot
+			if calling isValid on the configuration returns true
+				call backtrack on the current configuration
+		set the current square back to zero
+		call deadvance
+				
+
+main():
+	create an instance if needed
+	initialize a milisecond counter variable to zero
+
+	set row counter to -1 and column counter to 8
+	populate ten arrays of ten numbers from an easy sudoku puzzle
+	start a timer
+	call backtrack with the 2D array and the start time as parameters
+	stop the timer
+	print the returned difference in miliseconds and add it to the count
+
+	set row counter to -1 and column counter to 8
+    populate ten arrays of ten numbers from a medium sudoku puzzle
+    start a timer
+    call backtrack with the 2D array and the start time as parameters
+    stop the timer
+    print the returned difference in miliseconds and add it to the count
+
+	set row counter to -1 and column counter to 8
+    populate ten arrays of ten numbers from a hard sudoku puzzle
+    start a timer
+    call backtrack with the 2D array and the start time as parameters
+    print the returned difference in miliseconds
+
+	print the value of the milisecond counter
