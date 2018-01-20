@@ -1,3 +1,10 @@
+printBoard():
+    for i from 0 to 8:
+        print a line
+        for j from 0 to 8:
+            print the number in that cell followed by a space
+
+
 copyBoard():
     initialize a 2d array of 9 by 9
     for each row
@@ -12,24 +19,26 @@ checkSquare():
 
 isValid():
     store the number of what is in the current box: num
-    for each number from 1 to 9: i
+    for i from 0 to 8:
         if i does not equal the current column and the number at [current
                                                      row][i] equals num
             return false
         if i does not equal the current row ans the number at [i][current
                                                      column] equals num
-        return false
+            return false
     return the result of calling checkSquare
 
 
 deadvance():
-    if col is zero
-        col = 8
-        decrement row
+    if col is zero:
+        if row is not zero
+            col = 8
+            decrement row
     else
         decrement col
-    if the very first configuration has a number other than a zero in it
-        call deadvance
+    if not (col is zero and row is zero)
+        if the very first configuration has a number other than a zero in it
+            call deadvance
 
 advance():
     if col is 8
@@ -39,21 +48,23 @@ advance():
         increment col
     if row is not 9 and col is not 0
         if the very first configuration has a number other than a zero in it
-        call advance
+            call advance
 
 
 backtrack(2D_array, start_time):
     call advance
     if the pointer has advanced past the last square
-        stop the timer
-        do some math and return the milisecond time difference
+        return the current time
     else
         for each number from 1 to 9
             put the number in the pointed to spot
             if calling isValid on the configuration returns true
-                call backtrack on the current configuration
+                store the result of call backtrack on the current configuration
+                if the result is not zero
+                    return it
         set the current square back to zero
         call deadvance
+    return zero
 				
 
 main():
