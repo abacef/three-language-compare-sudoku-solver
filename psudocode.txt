@@ -68,31 +68,30 @@ backtrack(2D_array, start_time):
 				
 
 main():
-    create an instance if needed
     initialize a milisecond counter variable to zero
 
-    set row counter to -1 and column counter to 8
-    populate ten arrays of ten numbers from an easy sudoku puzzle
+    populate nine arrays of nine numbers from an easy sudoku puzzle
+    set row, column, board, and board copy variables
     start a timer
     call backtrack with the 2D array and the start time as parameters
     stop the timer
     print the returned difference in miliseconds and add it to the count
 
-    set row counter to -1 and column counter to 8
-    populate ten arrays of ten numbers from a medium sudoku puzzle
+    populate nine arrays of nine numbers from a medium sudoku puzzle
+    set row, column, board, and board copy variables
     start a timer
     call backtrack with the 2D array and the start time as parameters
     stop the timer
     print the returned difference in miliseconds and add it to the count
 
-    set row counter to -1 and column counter to 8
-    populate ten arrays of ten numbers from a hard sudoku puzzle
+    populate nine arrays of nine numbers from a hard sudoku puzzle
+    set row, column, board, and board copy variables
     start a timer
     call backtrack with the 2D array and the start time as parameters
-    print the returned difference in miliseconds
+    print the returned difference in miliseconds and add it to the count
 
-    set row counter to -1 and column counter to 8
-    populate ten arrays of ten numbers from an expert sudoku puzzle
+    populate nine arrays of nine numbers from an expert sudoku puzzle
+    set row, column, board, and board copy variables
     start a timer
     call backtrack with the 2D array and the start time as parameters
     stop the timer
