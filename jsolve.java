@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class jsolve {
 
     private int row;
@@ -129,7 +131,7 @@ public class jsolve {
     }
 
     public static void main(String[] args) {
-        long milCounter = 0;
+        double milCounter = 0;
         int[] s10 = {0, 0, 7, 0, 5, 0, 0, 9, 3};
         int[] s11 = {5, 8, 0, 7, 0, 0, 1, 6, 0};
         int[] s12 = {9, 0, 6, 8, 0, 3, 0, 2, 0};
@@ -144,7 +146,7 @@ public class jsolve {
         long start = System.nanoTime();
         long end = sea.backtrack() - start;
         sea.printBoard();   
-        System.out.println("\n" + end);
+        System.out.printf("\n%.3f milliseconds\n", end * Math.pow(10, -6));
         milCounter += end;
 
         int[] s20 = {0, 0, 4, 0, 3, 0, 8, 0, 0};
@@ -161,8 +163,44 @@ public class jsolve {
         start = System.nanoTime();
         end = smed.backtrack() - start;
         smed.printBoard();
-        System.out.println("\n" + end);
+        System.out.printf("\n%.3f milliseconds\n", end * Math.pow(10, -6));
         milCounter += end;
+
+        int[] s30 = {0, 0, 1, 0, 0, 0, 0, 2, 4};
+        int[] s31 = {7, 0, 0, 6, 1, 0, 0, 0, 0};
+        int[] s32 = {0, 0, 0, 0, 0, 9, 0, 0, 8};
+        int[] s33 = {6, 0, 0, 0, 0, 0, 2, 8, 1};
+        int[] s34 = {0, 4, 0, 0, 5, 0, 0, 3, 0};
+        int[] s35 = {1, 7, 3, 0, 0, 0, 0, 0, 6};
+        int[] s36 = {5, 0, 0, 3, 0, 0, 0, 0, 0};
+        int[] s37 = {0, 0, 0, 0, 4, 5, 0, 0, 2};
+        int[] s38 = {4, 6, 0, 0, 0, 0, 5, 0, 0};
+        int[][] s3 = {s30, s31, s32, s33, s34, s35, s36, s37, s38};
+        jsolve shar = new jsolve(s3);
+        start = System.nanoTime();
+        end = shar.backtrack() - start;
+        shar.printBoard();
+        System.out.printf("\n%.3f milliseconds\n", end * Math.pow(10, -6));
+        milCounter += end;
+
+        int[] s40 = {0, 2, 0, 7, 0, 0, 3, 0, 0};
+        int[] s41 = {5, 0, 0, 0, 0, 4, 0, 6, 0};
+        int[] s42 = {0, 0, 6, 1, 3, 0, 0, 0, 0};
+        int[] s43 = {0, 0, 2, 0, 6, 0, 0, 0, 4};
+        int[] s44 = {8, 0, 0, 0, 0, 0, 0, 0, 5};
+        int[] s45 = {4, 0, 0, 0, 1, 0, 8, 0, 0};
+        int[] s46 = {0, 0, 0, 0, 8, 7, 1, 0, 0};
+        int[] s47 = {0, 8, 0, 5, 0, 0, 0, 0, 7};
+        int[] s48 = {0, 0, 7, 0, 0, 2, 0, 9, 0};
+        int[][] s4 = {s40, s41, s42, s43, s44, s45, s46, s47, s48};
+        jsolve sexp = new jsolve(s4);
+        start = System.nanoTime();
+        end = sexp.backtrack() - start;
+        sexp.printBoard();
+        System.out.printf("\n%.3f milliseconds\n", end * Math.pow(10, -6));
+        milCounter += end;
+
+        System.out.printf("\n%.3f milliseconds total\n", milCounter * Math.pow(10, -6));
 
     }
 }
