@@ -1,4 +1,5 @@
 import time
+import math
 
 class Sudoku:
     
@@ -107,10 +108,10 @@ s18 = [3, 9, 0, 0, 7, 0, 2, 0, 0]
 s1 = [s10, s11, s12, s13, s14, s15, s16, s17, s18]
 sea = Sudoku(s1)
 start = time.time()
-end = (sea.backtrack() - start) * 10 * 10 * 10
+end = (sea.backtrack() - start)
 sea.print_board()
 print()
-print(end)
+print(str(round(end * math.pow(10, 3), 3)) + " milliseconds")
 mil_counter = mil_counter + end
 
 s20 = [0, 0, 4, 0, 3, 0, 8, 0, 0]
@@ -125,10 +126,10 @@ s28 = [0, 0, 3, 0, 2, 0, 6, 0, 0]
 s2 = [s20, s21, s22, s23, s24, s25, s26, s27, s28]
 smed = Sudoku(s2)
 start = time.time()
-end = (smed.backtrack() - start) * 10 * 10 * 10
+end = (smed.backtrack() - start)
 smed.print_board()
 print()
-print(end)
+print(str(round(end * math.pow(10, 3), 3)) + " milliseconds")
 mil_counter = mil_counter + end
 
 s30 = [0, 0, 1, 0, 0, 0, 0, 2, 4]
@@ -143,10 +144,10 @@ s38 = [4, 6, 0, 0, 0, 0, 5, 0, 0]
 s3 = [s30, s31, s32, s33, s34, s35, s36, s37, s38]
 shar = Sudoku(s3)
 start = time.time()
-end = (shar.backtrack() - start) * 10 * 10 * 10
+end = (shar.backtrack() - start)
 shar.print_board()
 print()
-print(end)
+print(str(round(end * math.pow(10, 3), 3)) + " milliseconds")
 mil_counter = mil_counter + end
 
 s40 = [0, 2, 0, 7, 0, 0, 3, 0, 0]
@@ -161,11 +162,11 @@ s48 = [0, 0, 7, 0, 0, 2, 0, 9, 0]
 s4 = [s40, s41, s42, s43, s44, s45, s46, s47, s48]
 sexp = Sudoku(s4)
 start = time.time()
-end = (sexp.backtrack() - start) * 10 * 10 * 10
+end = (sexp.backtrack() - start)
 sexp.print_board()
 print()
-print(end)
+print(str(round(end * math.pow(10, 3), 3)) + " milliseconds")
 mil_counter = mil_counter + end
 
 print()
-print(mil_counter)
+print(str(round(mil_counter * math.pow(10, 3), 3)) + " milliseconds total")
